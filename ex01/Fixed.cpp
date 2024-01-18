@@ -18,14 +18,13 @@ Fixed::Fixed(){
 	std::cout << "Default constructor called" << std::endl;
 }
 
-Fixed::Fixed(int const entier) : _entier(entier){
+Fixed::Fixed(int const entier) : _entier(entier << this->_bFract){
 	std::cout << "Int constructor called" << std::endl;
-	this->_entier = entier << this->_bFract;
 }
 
 Fixed::Fixed(float const flo){
 	std::cout << "Float constructor called" << std::endl;
-	this-> roundf(flo * (1 << this->_bFract));
+	this->_entier = roundf(flo * (1 << this->_bFract));
 }
 
 Fixed::Fixed(Fixed const & copy){
@@ -59,7 +58,7 @@ int     Fixed::toInt(void) const{
 
 float	Fixed::toFloat(void) const{
 
-	return ((float)this->_entier / (float)(1 >> this->_bFract));
+	return ((float)this->_entier / (float)(1 << this->_bFract));
 }
 
 std::ostream &	operator<<(std::ostream & o, Fixed const & rhs){

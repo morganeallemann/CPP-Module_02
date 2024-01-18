@@ -62,9 +62,5 @@ float	Fixed::toFloat(void) const{
 }
 
 std::ostream &	operator<<(std::ostream & o, Fixed const & rhs){
-	float	flottant;
-
-	flottant = rhs.toFloat();
-	o << flottant;
-	return (o);
+	return (o << rhs.toFloat());
 }

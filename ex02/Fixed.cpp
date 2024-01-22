@@ -14,30 +14,26 @@
 
 const int Fixed::_bFract = 8;
 
-Fixed::Fixed(){
-	std::cout << "Default constructor called" << std::endl;
+Fixed::Fixed() : _entier(0){
+
 }
 
 Fixed::Fixed(int const entier) : _entier(entier << this->_bFract){
-	std::cout << "Int constructor called" << std::endl;
+
 }
 
 Fixed::Fixed(float const flo){
-	std::cout << "Float constructor called" << std::endl;
 	this->_entier = roundf(flo * (1 << this->_bFract));
 }
 
 Fixed::Fixed(Fixed const & copy){
-	std::cout << "Copy constructor called" << std::endl;
 	*this = copy;
 }
 
 Fixed::~Fixed(){
-	std::cout << "Destructor called" << std::endl;
 }
 
 int     Fixed::getRawBits(void) const{
-    std::cout << "getRawBits member function called" << std::endl;
     return (this->_entier);
 }
 
@@ -47,7 +43,6 @@ void    Fixed::setRawBits(int const raw){
 }
 
 Fixed & Fixed::operator=(Fixed const & rhs){
-    std::cout << "Copy assignment operator called" << std::endl;
     this->_entier = rhs.getRawBits();
     return (*this);
 }
@@ -85,32 +80,20 @@ bool	Fixed::operator>=(Fixed const &rhs) const{
 	return (this->_entier >= rhs._entier);
 }
 
-Fixed	Fixed::operator+(Fixed const &rhs) const{
-	Fixed	result;
-
-	result = this->_entier + rhs._entier;
-	return (result);
+float	Fixed::operator+(Fixed const &rhs) const{
+	return (this->toFloat() + rhs.toFloat());
 }
 
-Fixed	Fixed::operator-(Fixed const &rhs) const{
-	Fixed	result;
-
-	result = this->_entier - rhs._entier;
-	return (result);
+float	Fixed::operator-(Fixed const &rhs) const{
+	return (this->toFloat() - rhs.toFloat());
 }
 
-Fixed	Fixed::operator*(Fixed const &rhs) const{
-	Fixed	result;
-
-	result = this->_entier * rhs._entier;
-	return (result);
+float	Fixed::operator*(Fixed const &rhs) const{
+	return (this->toFloat() * rhs.toFloat());
 }
 
-Fixed	Fixed::operator/(Fixed const &rhs) const{
-	Fixed	result;
-
-	result = this->_entier / rhs._entier;
-	return (result);
+float	Fixed::operator/(Fixed const &rhs) const{
+	return (this->toFloat() / rhs.toFloat());
 }
 
 Fixed &	Fixed::operator++(void){

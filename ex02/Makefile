@@ -13,7 +13,7 @@
 SRCS 		=	main.cpp Fixed.cpp \
 
 #--------------------------	VARIABLES -----------------------------------------#
-NAME		= fixedUtil
+NAME		= operator
 
 OBJS		= ${SRCS:.cpp=.o}
 

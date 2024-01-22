@@ -45,10 +45,10 @@ class Fixed {
 		bool	operator<=(Fixed const &rhs) const;
 		bool	operator>=(Fixed const &rhs) const;
 
-		Fixed	operator+(Fixed const &rhs) const;
-		Fixed	operator-(Fixed const &rhs) const;
-		Fixed	operator*(Fixed const &rhs) const;
-		Fixed	operator/(Fixed const &rhs) const;
+		float	operator+(Fixed const &rhs) const;
+		float	operator-(Fixed const &rhs) const;
+		float	operator*(Fixed const &rhs) const;
+		float	operator/(Fixed const &rhs) const;
 		/*Pre-incr*/
 		Fixed &	operator++(void);
 		Fixed & operator--(void);
